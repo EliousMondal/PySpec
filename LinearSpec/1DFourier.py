@@ -35,8 +35,8 @@ R = (R1_01+R1_10+R1_02+R1_20)[:,0] + 1j*(R1_01+R1_10+R1_02+R1_20)[:,1]
 # plt.show()
 
 """Parameters for Fourier transform"""
-ωMax = 11000*2*np.pi*sc.c/(10**13)*2*np.pi*sc.c/(10**13)
-ωMin = 9000*2*np.pi*sc.c/(10**13)*2*np.pi*sc.c/(10**13)
+ωMax = 11000*2*np.pi*sc.c/(10**13)#*2*np.pi*sc.c/(10**13)
+ωMin = 9000*2*np.pi*sc.c/(10**13)#*2*np.pi*sc.c/(10**13)
 ω = np.linspace(ωMin, ωMax, 4001)
 dω = ω[1]-ω[0]
 
