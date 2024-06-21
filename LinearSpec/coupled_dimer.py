@@ -67,10 +67,10 @@ def dHel0(R):
 @jit(nopython=True)
 def dHel(R):
     '''bath derivative of the state dependent part of Hamiltonian'''
-    dVij = np.zeros((NStates,NStates,2*NModes))
-    dVij[1,1,NModes:] = cj[:]
-    dVij[2,2,:NModes] = cj[:]
-    dVij[3,3,:] = np.hstack((cj,cj))[:]
+    dVij = np.zeros((NStates, 2*NModes))
+    dVij[1, NModes:] = cj[:]
+    dVij[2, :NModes] = cj[:]
+    dVij[3, :] = np.hstack((cj,cj))[:]
 
     return dVij
 
