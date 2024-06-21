@@ -27,6 +27,7 @@ def simulate(El):
     """PLDM simulation for ρ[El[0], El[1]]"""
     iF, iB = El[0], El[1]
     iR, iP = iBth.initR()
-    ρi, Rarr, Parr = method.runTraj(iR,iP,iF,iB,model.NSteps1)
+    # ρi, Rarr, Parr = method.runTraj(iR,iP,iF,iB,model.NSteps1)
+    ρi = method.runTraj(iR,iP,iF,iB,model.NSteps1)
 
     return linResponse(ρi,NStates,El)
