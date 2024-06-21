@@ -53,9 +53,9 @@ def Force(R, qF, pF, qB, pB):
 
     F = -dH0
     for i in range(len(qF)):
-        F -= 0.25 * dH[i,i,:] * ( qF[i] ** 2 + pF[i] ** 2 + qB[i] ** 2 + pB[i] ** 2)
-        for j in range(i+1, len(qF)):
-            F -= 0.5 * dH[i,j,:] * ( qF[i] * qF[j] + pF[i] * pF[j] + qB[i] * qB[j] + pB[i] * pB[j])
+        F -= 0.25 * dH[i, :] * ( qF[i] ** 2 + pF[i] ** 2 + qB[i] ** 2 + pB[i] ** 2)
+        # for j in range(i+1, len(qF)):
+        #     F -= 0.5 * dH[i, :] * ( qF[i] * qF[j] + pF[i] * pF[j] + qB[i] * qB[j] + pB[i] * pB[j])
 
     return F
 
@@ -107,8 +107,8 @@ def runTraj(iR,iP,iF,iB,NSteps):
     else :
         pl = 1
 
-    RArr = np.zeros((NSteps//nskip + pl, model.NR))
-    PArr = np.zeros((NSteps//nskip + pl, model.NR))
+    # RArr = np.zeros((NSteps//nskip + pl, model.NR))
+    # PArr = np.zeros((NSteps//nskip + pl, model.NR))
     ρ = np.zeros((NSteps//nskip + pl, 2*NStates*NStates+1))        # 2 is to store real and imaginary component seperately
     ρ[:,0] = np.arange(0,(NSteps//nskip + pl)*model.dtN,model.dtN)
     
@@ -134,7 +134,7 @@ def runTraj(iR,iP,iF,iB,NSteps):
             ρ[iskip,1:] += np.hstack((PijtReal.flatten(),PijtImag.flatten()))
             iskip += 1
         #-------------------------------------------------------
-        RArr[i,:], PArr[i,:] = R, P
+        # RArr[i,:], PArr[i,:] = R, P
         R, P, qF, qB, pF, pB = vv(R, P, qF, qB, pF, pB)
     
-    return ρ, RArr, PArr
+    return ρ#, RArr, PArr
