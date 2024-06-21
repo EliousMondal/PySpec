@@ -38,7 +38,8 @@ for iState in range(model.NStates):
     for itraj in TaskArray:
         iF, iB = iState, iState
         iR, iP = iBth.initR()
-        ρi, Rarr, Parr = method.runTraj(iR,iP,iF,iB,model.NSteps1)
+        # ρi, Rarr, Parr = method.runTraj(iR,iP,iF,iB,model.NSteps1)
+        ρi = method.runTraj(iR,iP,iF,iB,model.NSteps1)
         ρState[:,1:] += ρi[:,1:]
     ρStateTaskArr = ρState.flatten()
     ρchain[iState*ρFlatLen:(iState+1)*ρFlatLen] = ρStateTaskArr
